@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TaskManager Frontend
 
-## Getting Started
+Este é o frontend da aplicação TaskManager, uma interface moderna e responsiva construída para interagir com a API do TaskManager Backend. A aplicação permite que os usuários se autentiquem e gerenciem suas tarefas de forma intuitiva, oferecendo uma experiência de usuário fluida e segura.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Funcionalidades
+
+- **Autenticação de Usuários:** Oferece uma experiência de login e registro segura, interagindo diretamente com os endpoints de autenticação JWT do backend.
+- **Gerenciamento de Tarefas (CRUD):** Permite criar, ler, atualizar e deletar tarefas de forma dinâmica, com uma interface que reflete o status de cada tarefa.
+- **Design Moderno:** A interface foi construída com componentes **Radix UI** e estilizada com **Tailwind CSS**, garantindo um design consistente, acessível e responsivo em todos os dispositivos.
+- **Validação de Formulários:** Utiliza o **React Hook Form** e **Zod** para uma validação de formulários robusta e eficiente, melhorando a confiabilidade das interações do usuário.
+- **Gerenciamento de Estado:** A aplicação gerencia o estado da autenticação e das tarefas, proporcionando uma experiência de navegação e uso sem interrupções.
+
+---
+
+## Tecnologias Utilizadas
+
+- **[Next.js 15](https://nextjs.org/)** - Framework React para aplicações web de alto desempenho.
+- **[React 19](https://react.dev/)** - Biblioteca JavaScript para a construção de interfaces de usuário.
+- **[TypeScript 5](https://www.typescriptlang.org/)** - Linguagem de programação que adiciona tipagem estática ao JavaScript.
+- **[Tailwind CSS 4](https://tailwindcss.com/)** - Framework de CSS utilitário para estilização rápida.
+- **[Radix UI](https://www.radix-ui.com/)** - Biblioteca de componentes headless para criar sistemas de design acessíveis.
+- **[React Hook Form](https://react-hook-form.com/)** - Biblioteca para gerenciamento de formulários.
+- **[Zod](https://zod.dev/)** - Biblioteca de validação de esquemas de tipagem para TypeScript.
+- **[Axios](https://axios-http.com/)** - Cliente HTTP para realizar requisições à API do backend.
+- **[JWT-decode](https://github.com/auth0/jwt-decode)** - Biblioteca para decodificar tokens JWT no cliente.
+- **[Lucide React](https://lucide.dev/)** - Coleção de ícones para a interface.
+
+---
+
+## Como Executar o Projeto
+
+Para rodar o projeto do frontend, é necessário ter um ambiente de desenvolvimento Node.js e o backend em execução.
+
+### Pré-requisitos
+
+- **[Node.js](https://nodejs.org/en)** (versão recomendada: 20 ou superior)
+- **[npm](https://www.npmjs.com/)** ou **[Yarn](https://yarnpkg.com/)**
+- **TaskManager Backend** em execução (para que o frontend possa se comunicar com a API).
+
+### Instalação
+
+1. Clone o repositório do frontend para a sua máquina:
+   ```bash
+  https://github.com/biancadearaujo/task-manager-frontend.git
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+cd TaskManager-Frontend
+npm install
+```
+```
+npm run dev
+```
