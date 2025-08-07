@@ -1,7 +1,5 @@
-// cypress/e2e/task_manager_api.cy.js
 import axios from 'axios';
 
-// Definição de tipo para a Task para evitar erros de tipagem implícita
 interface Task {
   id: string;
   title: string;
@@ -20,7 +18,7 @@ describe('Task Manager API E2E', () => {
 
   const user = {
     name: 'Test User',
-    email: '', // O email será gerado dinamicamente
+    email: '',
     password: 'Test@123'
   };
 

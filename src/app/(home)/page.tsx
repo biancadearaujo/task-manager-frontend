@@ -41,7 +41,7 @@ interface Task {
   id: string;
   title: string;
   description: string;
-  status: number;
+  status: "Pending" | "InProgress" | "Completed";
   createdAt: string;
   completedAt: string | null;
   userId: string;
@@ -57,9 +57,9 @@ interface ApiErrorResponse {
 }
 
 const TASK_STATUS = {
-  0: { text: "Pendente", className: "bg-yellow-500 hover:bg-yellow-600" },
-  1: { text: "Em Progresso", className: "bg-blue-500 hover:bg-blue-600" },
-  2: { text: "Concluída", className: "bg-green-500 hover:bg-green-600" },
+  Pending: { text: "Pendente", className: "bg-yellow-500 hover:bg-yellow-600" },
+  InProgress: { text: "Em Progresso", className: "bg-blue-500 hover:bg-blue-600" },
+  Completed: { text: "Concluída", className: "bg-green-500 hover:bg-green-600" },
 };
 
 const getErrorMessage = (err: unknown): string => {
@@ -222,7 +222,7 @@ function TaskCard({ task, onDelete, onUpdate }: TaskCardProps) {
   const [editTitle, setEditTitle] = useState(task.title);
   const [editDescription, setEditDescription] = useState(task.description);
 
-  const statusInfo = TASK_STATUS[task.status as keyof typeof TASK_STATUS] || {
+  const statusInfo = TASK_STATUS[task.status] || {
     text: "Desconhecido",
     className: "bg-gray-400",
   };
@@ -249,16 +249,17 @@ function TaskCard({ task, onDelete, onUpdate }: TaskCardProps) {
         <div className="mt-4">
           <Label>Mudar Status</Label>
           <Select
-            value={String(task.status)}
-            onValueChange={(value) => onUpdate(task.id, { status: Number(value) })}
+            value={task.status}
+            onValueChange={(value) => onUpdate(task.id, { status: value as "Pending" | "InProgress" | "Completed" })}
           >
             <SelectTrigger>
               <SelectValue placeholder="Selecione o status" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="0">Pendente</SelectItem>
-              <SelectItem value="1">Em Progresso</SelectItem>
-              <SelectItem value="2">Concluída</SelectItem>
+              {/* Altere os `value` para as strings do Enum */}
+              <SelectItem value="Pending">Pendente</SelectItem>
+              <SelectItem value="InProgress">Em Progresso</SelectItem>
+              <SelectItem value="Completed">Concluída</SelectItem>
             </SelectContent>
           </Select>
         </div>
