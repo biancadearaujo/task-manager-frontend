@@ -85,8 +85,10 @@ export function RegisterForm({
       await onSubmit(userData);
 
       router.push("/login");
-    } catch (err: any) {
-      setErrorMessage(err.message || "Erro ao registrar. Tente novamente.");
+    } catch (err: unknown) {
+      // O erro 'err' agora é do tipo 'unknown', precisamos de uma verificação
+      const message = err instanceof Error ? err.message : "Erro ao registrar. Tente novamente.";
+      setErrorMessage(message);
     } finally {
       setIsLoading(false);
     }
@@ -102,7 +104,6 @@ export function RegisterForm({
           </CardDescription>
         </CardHeader>
         <CardContent>
-          {/* Adicione o manipulador onSubmit ao formulário */}
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-3">
@@ -135,7 +136,6 @@ export function RegisterForm({
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              {/* CAMPO ADICIONAL: Confirmar Senha */}
               <div className="grid gap-3">
                 <Label htmlFor="confirm-password">Confirmar Senha</Label>
                 <Input
@@ -146,7 +146,6 @@ export function RegisterForm({
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
               </div>
-              {/* Exibe mensagem de erro se houver */}
               {errorMessage && (
                 <p className="text-red-500 text-sm text-center">
                   {errorMessage}

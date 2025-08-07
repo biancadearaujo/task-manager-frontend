@@ -47,11 +47,6 @@ interface Task {
   userId: string;
 }
 
-interface PageProps {
-  params: { [key: string]: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-}
-
 interface ApiErrorResponse {
   message: string;
 }
@@ -72,7 +67,8 @@ const getErrorMessage = (err: unknown): string => {
   return "Ocorreu um erro inesperado.";
 };
 
-export default function HomePage({ params, searchParams }: PageProps) {
+// A função HomePage não precisa de props, pois é um Client Component
+export default function HomePage() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -256,7 +252,6 @@ function TaskCard({ task, onDelete, onUpdate }: TaskCardProps) {
               <SelectValue placeholder="Selecione o status" />
             </SelectTrigger>
             <SelectContent>
-              {/* Altere os `value` para as strings do Enum */}
               <SelectItem value="Pending">Pendente</SelectItem>
               <SelectItem value="InProgress">Em Progresso</SelectItem>
               <SelectItem value="Completed">Concluída</SelectItem>
