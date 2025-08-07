@@ -26,6 +26,7 @@ Este é o frontend da aplicação TaskManager, uma interface moderna e responsiv
 - **[Axios](https://axios-http.com/)** - Cliente HTTP para realizar requisições à API do backend.
 - **[JWT-decode](https://github.com/auth0/jwt-decode)** - Biblioteca para decodificar tokens JWT no cliente.
 - **[Lucide React](https://lucide.dev/)** - Coleção de ícones para a interface.
+- **[Cypress](https://www.cypress.io/)** - Ferramenta de teste end-to-end (E2E) para aplicações web.
 
 ---
 
@@ -43,12 +44,32 @@ Para rodar o projeto do frontend, é necessário ter um ambiente de desenvolvime
 
 1. Clone o repositório do frontend para a sua máquina:
    ```bash
-  https://github.com/biancadearaujo/task-manager-frontend.git
-```
-```
-cd TaskManager-Frontend
-npm install
-```
-```
-npm run dev
-```
+   git clone https://github.com/biancadearaujo/task-manager-frontend.git
+   ```
+2. Instale as dependências e execute o projeto:
+   ```bash
+   cd TaskManager-Frontend
+   npm install
+   npm run dev
+   ```
+
+---
+
+## Testes End-to-End com Cypress
+
+- **Cobertura de Fluxos Reais:** Utiliza o **Cypress** para simular interações reais de usuários com a aplicação, garantindo que os fluxos essenciais de autenticação e gerenciamento de tarefas funcionem como esperado.
+- **Testes de Autenticação:** Valida o processo de login, registro e persistência do token JWT, assegurando a segurança e integridade da autenticação.
+- **Testes de Tarefas (CRUD):** Cobre a criação, leitura, atualização e exclusão de tarefas, testando toda a lógica de interação com o backend.
+- **Limpeza de Dados de Teste:** Garante que os dados criados durante os testes (usuário e tarefas) sejam removidos ao final, mantendo o ambiente de teste limpo e confiável.
+- **Execução Interativa:** Os testes podem ser executados em uma interface gráfica que permite acompanhar passo a passo cada interação.
+
+### Executando os Testes
+
+Para rodar os testes end-to-end com Cypress:
+
+1. Certifique-se de que **frontend** e **backend** estão em execução.
+2. Execute o comando abaixo para abrir o Test Runner do Cypress:
+   ```bash
+   npm run cy:open
+   ```
+3. Na interface gráfica que será aberta, selecione o teste desejado para executá-lo.
